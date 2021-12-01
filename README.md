@@ -8,3 +8,5 @@ Stable Caenorhabditis elegans chromatin domains separate broadly expressed and d
 Kenneth J Evans  1 , Ni Huang  1 , Przemyslaw Stempor  1 , Michael A Chesney  1 , Thomas A Down  1 , Julie Ahringer  2
 Affiliations  expand
 PMID: 27791097  PMCID: PMC5111720  DOI: 10.1073/pnas.1608162113
+
+Much of the data is based on tiling arrays that are unevenly spaced so to avoid overlap - reduced ranges to 1bp, then after liftover expanded them as far as the next range up to a maximum of 50bp (to avoid a discretised signal).
