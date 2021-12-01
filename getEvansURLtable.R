@@ -8,7 +8,7 @@ l3<-df[df$stage=="L3" & df$used=="x",]
 l3$rep1<-NA
 l3$rep2<-NA
 l3$genomeVer<-NA
-i=6
+i=10
 for(i in 17:length(l3$GEO)){
   matrixFile<-paste0(l3$GEO[i],"_series_matrix.txt")
   if(!file.exists(paste0(matrixFile,".gz")) & !file.exists(matrixFile)){
@@ -25,7 +25,12 @@ for(i in 17:length(l3$GEO)){
   }
   line<-system(paste0("grep ftp.*\\.wig\\.gz ", matrixFile),intern=T)
   urls<-unlist(strsplit(line,'\t\"'))
-  urls<-urls[!grepl("Input",urls)]
+  urls<-urls[grepl("^ftp",urls)]
+  if(length(urls)>2){
+    ipidx<-grepl(l3$target[i],urls)
+    urls<-urls[ipidx]
+  }
+  #urls<-urls[!grepl("Input",urls)]
   idxs<-grep("\\.wig\\.gz",urls)
   l3$rep1[i]<-gsub('\"','',urls[idxs[1]])
   l3$rep2[i]<-gsub('\"','',urls[idxs[2]])
